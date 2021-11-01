@@ -32,23 +32,29 @@ export default function Sandbox() {
 
             {/* dynamic p tag mapping out SandboxData */}
             {names.map((name) => (
+                <>
                 {name.isEditing ?
                 <div>
                 <p id={name.id}>{name.name}</p>
-                // delete name button
-                <button onClick={() => isEditingName(name.id)}>Edit</button>
-                <button onClick={() => deleteName(name.id)}>Delete</button>
+                {/* delete name button */}
+                <button onClick={() => isEditingName(name.id)}>Save</button>
+                <button onClick={() => deleteName(name.id)}>Cancel</button>
                 </div>
 
                 :
                 
                 <div>
                 <p id={name.id}>{name.name}</p>
-                // delete name button
-                <button onClick={() => isEditingName(name.id)}>Save</button>
-                <button onClick={() => deleteName(name.id)}>Cancel</button>
+                {/* delete name button */}
+                <button onClick={() => isEditingName(name.id)}>Edit</button>
+                <button onClick={() => deleteName(name.id)}>Delete</button>
                 </div>
+
+
+
+                
             }
+            </>
 
             ))}
             
