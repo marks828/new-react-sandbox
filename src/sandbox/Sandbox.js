@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { SandboxData } from "./SandboxData"
+import NameTag from "./NameTag"
 import { nanoid } from "nanoid"
 export default function Sandbox() {
     
@@ -33,28 +34,14 @@ export default function Sandbox() {
             {/* dynamic p tag mapping out SandboxData */}
             {names.map((name) => (
                 <>
-                {name.isEditing ?
-                <div>
-                <p id={name.id}>{name.name}</p>
-                {/* delete name button */}
-                <button onClick={() => isEditingName(name.id)}>Save</button>
-                <button onClick={() => deleteName(name.id)}>Cancel</button>
-                </div>
-
-                :
-                
-                <div>
-                <p id={name.id}>{name.name}</p>
-                {/* delete name button */}
-                <button onClick={() => isEditingName(name.id)}>Edit</button>
-                <button onClick={() => deleteName(name.id)}>Delete</button>
-                </div>
-
-
-
-                
-            }
-            </>
+                    <NameTag 
+                        names = {names}
+                        name = {name}
+                        deleteName = {deleteName}
+                        isEditingName = {isEditingName}
+                    />
+                    
+                </>
 
             ))}
             
