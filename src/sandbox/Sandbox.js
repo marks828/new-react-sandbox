@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { SandboxData } from "./SandboxData"
-import NameTag from "./NameTag"
+import SandboxName from "./SandboxName"
 import { nanoid } from "nanoid"
 export default function Sandbox() {
     
@@ -21,8 +21,18 @@ export default function Sandbox() {
             }
             return name
         })
-        console.log(editName)
-        setNames(editName)
+        // console.log(editName)
+        return setNames(editName)
+    }
+
+    function updateName(id, newName){
+        const updateName = names.map(name => {
+            if(id === name.id){
+                return {...name, name: newName, isEditing: !name.isEditing}
+            }
+            return name
+        })
+        return setNames(updateName)
     }
     console.log(names)
 
@@ -34,11 +44,12 @@ export default function Sandbox() {
             {/* dynamic p tag mapping out SandboxData */}
             {names.map((name) => (
                 <>
-                    <NameTag 
+                    <SandboxName 
                         names = {names}
                         name = {name}
                         deleteName = {deleteName}
                         isEditingName = {isEditingName}
+                        updateName = {updateName}
                     />
                     
                 </>
