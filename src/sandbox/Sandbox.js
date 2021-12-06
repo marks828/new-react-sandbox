@@ -65,7 +65,8 @@ export default function Sandbox() {
             <button 
                 type="submit"
                 onClick={() => {
-                    setNames([...names, {id:nanoid(), name: newNameInput}])}}
+                    setNames([...names, {id:nanoid(), name: newNameInput}])}
+                }
             >
                 Add Name</button>
             </div>
